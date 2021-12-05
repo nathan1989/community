@@ -21,7 +21,10 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "incremental": true
+    "incremental": true,
+    "types": [
+      "webpack-env"
+    ]
   },
   "exclude": [
     "node_modules"
