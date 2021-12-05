@@ -36,5 +36,18 @@ export default {
         },
       ],
     },
+    {
+      name: 'playlists',
+      label: 'Playlists',
+      folder: "content/playlists",
+      create: true,
+      fields: [
+        { label: "Title", name: "title", widget: "string" },
+        { label: "Description", name: "description", widget: "string" },
+        { label: "Featured Image", name: "thumbnail", widget: "image" },
+        { label: "Playlist", name: "playlist", widget: "markdown" },
+        { label: "Lyrics", name: "lyrics", widget: "markdown" },
+      ]
+    },
   ],
 };
