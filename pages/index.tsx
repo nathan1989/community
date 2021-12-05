@@ -1,4 +1,4 @@
-import { NextPage, GetStaticProps } from 'next';
+import { NextPage, GetStaticProps } from 'next'
 
 interface Props {
   content: { attributes: HomeAttributes };

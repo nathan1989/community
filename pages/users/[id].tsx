@@ -1,9 +1,10 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 
-import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
-import Layout from '../../components/Layout'
-import ListDetail from '../../components/ListDetail'
+import { User } from 'interfaces'
+import { sampleUserData } from 'utils/sample-data'
+import getErrorMessage from 'utils/getErrorMessage'
+import Layout from 'components/Layout'
+import ListDetail from 'components/ListDetail'
 
 type Props = {
   item?: User
@@ -56,6 +57,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // will receive `item` as a prop at build time
     return { props: { item } }
   } catch (err) {
-    return { props: { errors: err.message } }
+    return { props: { errors: getErrorMessage(err) } }
   }
 }
