@@ -39,13 +39,15 @@ export default {
     {
       name: 'playlists',
       label: 'Playlists',
+      slug: '{{day}}-{{month}}-{{year}}-{{slug}}',
       folder: "content/playlists",
       create: true,
       fields: [
-        { label: "Title", name: "title", widget: "string" },
+        { label: "Title", name: "title", widget: "string", required: true },
+        { label: 'Publish Date', name: 'date', widget: 'datetime', required: true },
         { label: "Description", name: "description", widget: "string" },
         { label: "Featured Image", name: "thumbnail", widget: "image" },
-        { label: "Playlist", name: "playlist", widget: "markdown" },
+        { label: "Playlist", name: "playlist", widget: "markdown", required: true },
         { label: "Lyrics", name: "lyrics", widget: "markdown" },
       ]
     },

@@ -25,21 +25,19 @@ const Playlists = ({ items }: Props) => (
 )
 
 export const getStaticProps: GetStaticProps = async () => {
+  const BLOGS_PATH = 'content/playlists'
+
   const items = (context => {
     const keys = context.keys()
-    console.log(keys)
-    const data = keys.map((key) => {
-      console.log(key)
-      const slug = key
-        .replace(/^.*[\\\/]/, '')
-        .split('.')
-        .slice(0, -1)
-        .join('.')
-      return slug
+    const data = keys.map(async (path) => {
+      const markdown = await import(`${BLOGS_PATH}/${path}`);
+      return { ...markdown, slug: path.substring(0, path.length - 3) }
     })
     return data
-  })(require.context('content/playlists', false, /\.md$/))
+  })(require.context('content/playlists', true, /\.md$/))
+
   console.log(items)
+
   return { props: { items } }
 };
 export default Playlists
