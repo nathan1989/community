@@ -13,9 +13,9 @@ const Playlists = ({ items }: Props) => (
     <ul>
       {items.map((item, index) => (
         <li key={index}>
-          <Link href="/playlists/[item]" as={`/playlists/${item}`}>
+          <Link href={`/playlists/${item.slug}`}>
             <a>
-              {item}
+              {item.title}
             </a>
           </Link>
         </li>
@@ -24,20 +24,25 @@ const Playlists = ({ items }: Props) => (
   </Layout>
 )
 
-export const getStaticProps: GetStaticProps = async () => {
+const getAllPlaylists = async () => {
   const BLOGS_PATH = 'content/playlists'
-
   const items = (context => {
-    const keys = context.keys()
-    const data = keys.map(async (path) => {
-      const markdown = await import(`${BLOGS_PATH}/${path}`);
-      return { ...markdown, slug: path.substring(0, path.length - 3) }
+    return context.keys()
+    .filter((path) => !path.includes(BLOGS_PATH))
+    .map(path => path.replace('./', ''))
+  })(require.context('/content/playlists', false, /\.md$/))
+
+  return Promise.all(
+    items.map(async path => {
+      const markdown = await import(`../../${BLOGS_PATH}/${path}`);
+      const items = markdown.attributes
+      return { ...items, slug: path.substring(0, path.length - 3) };
     })
-    return data
-  })(require.context('content/playlists', true, /\.md$/))
+  );
+}
 
-  console.log(items)
-
+export const getStaticProps: GetStaticProps = async () => {
+  const items = await getAllPlaylists()
   return { props: { items } }
 };
 export default Playlists

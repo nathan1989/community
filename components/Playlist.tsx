@@ -8,8 +8,8 @@ type PlaylistProps = {
 
 const Playlist = ({ item: user }: PlaylistProps) => (
   <div>
-    <h1>Detail for {user.name}</h1>
-    <p>ID: {user.id}</p>
+    <h1>{user.title}</h1>
+    <p>{user.description}</p>
   </div>
 )
 

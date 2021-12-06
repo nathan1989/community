@@ -5,7 +5,7 @@ import ListDetail from 'components/Playlist'
 import { ParsedUrlQuery } from 'querystring'
 
 interface IParams extends ParsedUrlQuery {
-    slug: string
+  slug: string
 }
 
 type Props = {
@@ -38,13 +38,22 @@ const Playlist = ({ item, errors }: Props) => {
 export default Playlist
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  return { paths: [], fallback: false }
+  const blogSlugs = ((context) => {
+    const keys = context.keys()
+    const data = keys.map((key) => {
+      let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3)
+      return slug
+    })
+    return data
+  })(require.context('../../content/playlists', true, /\.md$/))
+
+  const paths = blogSlugs.map((slug) => `/playlists/${slug}`)
+
+  return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IParams
-  console.log(slug)
-  const item = await import(`content/playlists/${slug}.md`);
-  console.log(item)
+  const item = await import(`../../content/playlists/${slug}.md`).catch(() => null)
   return { props: { item } }
 };
