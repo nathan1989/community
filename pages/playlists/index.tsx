@@ -1,10 +1,11 @@
 import { GetStaticProps } from 'next'
-import { Playlist } from 'interfaces'
+import { PlaylistProps } from 'interfaces'
 import Layout from 'components/Layout'
 import Link from 'next/link'
+import config from 'cms/config'
 
 type Props = {
-  items: Playlist[]
+  items: PlaylistProps[]
 }
 
 const Playlists = ({ items }: Props) => (
@@ -25,18 +26,19 @@ const Playlists = ({ items }: Props) => (
 )
 
 const getAllPlaylists = async () => {
-  const BLOGS_PATH = 'content/playlists'
+  const playlistFolderPath = config?.collections?.find(i => i.name === 'playlists')?.folder || ''
   const items = (context => {
     return context.keys()
-    .filter((path) => !path.includes(BLOGS_PATH))
+    .filter((path) => !path.includes(playlistFolderPath))
     .map(path => path.replace('./', ''))
   })(require.context('/content/playlists', false, /\.md$/))
 
   return Promise.all(
     items.map(async path => {
-      const markdown = await import(`../../${BLOGS_PATH}/${path}`);
+      console.log(path)
+      const markdown = await import(`../../${playlistFolderPath}/${path}`);
       const items = markdown.attributes
-      return { ...items, slug: path.substring(0, path.length - 3) };
+        return { ...items, slug: path.substring(0, path.length - 3) };
     })
   );
 }

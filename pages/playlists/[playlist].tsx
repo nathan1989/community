@@ -1,15 +1,15 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { Playlist } from 'interfaces'
+import { PlaylistProps } from 'interfaces'
 import Layout from 'components/Layout'
-import ListDetail from 'components/Playlist'
 import { ParsedUrlQuery } from 'querystring'
+import PlaylistSection from 'components/PlaylistSection'
 
-interface IParams extends ParsedUrlQuery {
-  slug: string
+interface Params extends ParsedUrlQuery {
+  playlist: string
 }
 
 type Props = {
-  item?: Playlist
+  item: PlaylistProps
   errors?: string
 }
 
@@ -26,11 +26,9 @@ const Playlist = ({ item, errors }: Props) => {
 
   return (
     <Layout
-      title={`${
-        item ? item.title : 'User Detail'
-      } | Community`}
+      title={`${item ? item.title : 'Playlist detail'} | Community`}
     >
-      {item && <ListDetail item={item} />}
+      <PlaylistSection item={item} />
     </Layout>
   )
 }
@@ -53,7 +51,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { slug } = context.params as IParams
-  const item = await import(`../../content/playlists/${slug}.md`).catch(() => null)
-  return { props: { item } }
+  const { playlist } = context.params as Params
+  const item = await import(`../../content/playlists/${playlist}.md`).catch(() => null)
+  return { props: { item: item?.attributes } }
 };

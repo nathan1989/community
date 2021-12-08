@@ -1,4 +1,4 @@
-export type Playlist = {
+export type PlaylistProps = {
   slug: string,
   title: string,
   date: string,

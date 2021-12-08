@@ -45,10 +45,10 @@ export default {
       fields: [
         { label: "Title", name: "title", widget: "string", required: true },
         { label: 'Publish Date', name: 'date', widget: 'datetime', required: true },
-        { label: "Description", name: "description", widget: "string" },
-        { label: "Featured Image", name: "thumbnail", widget: "image" },
+        { label: "Description", name: "description", widget: "string", required: false },
+        { label: "Featured Image", name: "thumbnail", widget: "image", required: false },
         { label: "Playlist", name: "playlist", widget: "markdown", required: true },
-        { label: "Lyrics", name: "lyrics", widget: "markdown" },
+        { label: "Lyrics", name: "lyrics", widget: "markdown", required: true },
       ]
     },
   ],
