@@ -9,9 +9,11 @@ type Props = {
 
 const PlaylistSection: NextPage<Props> = ({ item }) => (
     <div>
-        <h1>{item.title}</h1>
-        <p>{moment(item.date).format('Do MMM YYYY [at] h:mm A z')}</p>
-        <p>{item.description}</p>
+        <div className="flex items-end mb-2">
+          <h1 className="text-xl mr-2">{item.title}</h1>
+          <span className="text-md italic">{moment(item.date).format('Do MMM YYYY [at] h:mm A z')}</span>
+        </div>
+        <p className="mb-3">{item.description}</p>
         <Markdown>{item.playlist}</Markdown>
         <Markdown>{item.lyrics}</Markdown>
     </div>

@@ -15,7 +15,7 @@ const HomePage: NextPage<Props> = ({ content }) => {
     <Layout
       title={`${attributes?.hero_title ? attributes.hero_title : 'Home'} | Community`}
     >
-      <h1>{attributes.hero_title}</h1>
+      <h1 className="text-lg mb-2">{attributes.hero_title}</h1>
       <p>{attributes.hero_description}</p>
       <img src={attributes.hero_image} alt='hero image' />
     </Layout>
