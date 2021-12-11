@@ -1,7 +1,7 @@
 export default {
   cms_manual_init: true,
   backend: {
-    name: 'github',
+    name: 'git-gateway',
     repo: 'nathan1989/community',
     branch: 'main',
   },
