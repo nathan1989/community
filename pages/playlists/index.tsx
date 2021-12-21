@@ -10,7 +10,8 @@ type Props = {
 
 const Playlists = ({ items }: Props) => (
   <Layout title="Playlists | Community">
-    <h1 className="text-lg mb-2">Playlists</h1>
+    <h1 className="text-lg mb-1">Playlists</h1>
+    <p className="mb-4">New playlists to be added regularly.</p>
     <ul>
       {items.map((item, index) => (
         <li key={index} className="mb-2">

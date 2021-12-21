@@ -13,6 +13,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet" />
       **<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />**
     </Head>
     <header className="p-4">
@@ -26,7 +27,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
         </Link>{' '}
       </nav>
     </header>
-    <div className="p-4">
+    <div className="flex flex-col items-center justify-items-center p-4">
       {children}
     </div>
   </div>
