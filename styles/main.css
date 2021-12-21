@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'theseasons';
+    /* src: local('TheSeasons'), url(/fonts/the-seasons.otf) format('opentype'); */
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'opensanslight';
+    /* src: local('OpenSansLight'), url(/fonts/OpenSans-Light.otf) format('opentype'); */
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+body {
+    background: #fdbf56;
+    display: flex;
+    align-items: center;
+    font-family: Arial;
+}
+
+h1,
+h2 { 
+    font-family: Arial;
+}
+
