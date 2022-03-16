@@ -7,7 +7,7 @@ export default function Blog({ frontmatter, markdown}) {
   return (
     <div>
       <Head>
-        <title>Demo Blog | {frontmatter.title}</title>
+        <title>Community | {frontmatter.title}</title>
       </Head>
       <h1>{frontmatter.title}</h1>
       <span>{frontmatter.date}</span>

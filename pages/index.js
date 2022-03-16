@@ -1,47 +1,36 @@
-import fs from 'fs'
-import matter from 'gray-matter'
 import Link from 'next/link'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home({ blogs }) {
-  return (<div className={styles['container']}>
+export default function Home() {
+  const navItems = [
+    { href: '/playlists', label: 'Playlists' },
+    { href: '/lyrics', label: 'Lyrics' },
+  ]
+  return (<div className='container'>
     <Head>
-      <title>Demo Blog</title>
+      <title>Community</title>
     </Head>
-    <h1 className={styles['header']}>Welcome to my blog</h1>
-    <p className={styles['subtitle']}>This is a subtitle idk what to type here</p>
-    <ul className={styles['blog-list']}>
-      {blogs.map(blog => (
-        <li key={blog.slug}>
-          <Link href={`/blog/${blog.slug}`}>
-            <a>{blog.date}:{blog.title}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div className={styles.container}>
+      <img src="https://via.placeholder.com/450" alt="Community" />
+      <div className={styles.details}>
+        <p>
+          <span>Sunday</span>
+          <span>11am to 12pm</span>
+        </p>
+        <p>
+          Your local park
+        </p>
+      </div>
+      <ul className={styles.links}>
+        {navItems.map((blog, index) => (
+          <li key={index}>
+            <Link href={blog.href}>
+              <a className='h2'>{blog.label}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>)
-}
-
-export async function getStaticProps() {
-  // List of files in blgos folder
-  const filesInBlogs = fs.readdirSync('./content/playlists')
-
-  // Get the front matter and slug (the filename without .md) of all files
-  const blogs = filesInBlogs.map(filename => {
-    const file = fs.readFileSync(`./content/playlists/${filename}`, 'utf8')
-    const matterData = matter(file)
-
-    return {
-      ...matterData.data, // matterData.data contains front matter
-      slug: filename.slice(0, filename.indexOf('.'))
-    }
-  })
-
-  return {
-    props: {
-      blogs
-    }
-  }
-
 }
