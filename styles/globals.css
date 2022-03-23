@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 
 @font-face {
-  font-family: 'theseasons';
-  src: local('TheSeasons'), url(../public/fonts/the-seasons.otf) format('opentype');
+  font-family: "theseasons";
+  src: local("TheSeasons"),
+    url(../public/fonts/the-seasons.otf) format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -12,7 +13,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background: #fbdf56;
   color: black;
 }
@@ -21,7 +22,7 @@ h1,
 h2,
 .h1,
 .h2 {
-  font-family: 'theseasons';
+  font-family: "theseasons";
   font-weight: normal;
   margin: 0 0 20px;
 }
@@ -52,11 +53,4 @@ ul {
 
 * {
   box-sizing: border-box;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 50px;
 }
