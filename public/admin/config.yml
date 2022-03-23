@@ -13,6 +13,7 @@ collections:
       - label: "Home"
         name: "home"
         file: "content/pages/home.md"
+        preview_path: "/"
         fields:
           - {label: "Day", name: "day", widget: "string"}
           - {label: "Times", name: "times", widget: "string"}
@@ -20,12 +21,14 @@ collections:
       - label: "About"
         name: "about"
         file: "content/pages/about.md"
+        preview_path: "/about"
         fields:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
       - label: "Playlists"
         name: "playlists"
         file: "content/pages/playlists.md"
+        preview_path: "/playlists"
         fields:
           - {label: "Body", name: "body", widget: "markdown"}
   - name: "playlist" # Used in routes, e.g., /admin/collections/playlist
@@ -33,6 +36,7 @@ collections:
     folder: "content/playlists" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    preview_path: "/playlists/{{slug}}" # The path to the preview page
     fields: # The fields for each document, usually in front matter
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: "HH:mm", format: "LLL"}
