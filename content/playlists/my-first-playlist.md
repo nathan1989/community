@@ -1,9 +1,8 @@
 ---
-title: "My First Playlist"
+title: My First Playlist
 date: 24, August, 2021
 ---
-
-# Welcome to my blog
+# Welcome to community
 
 This is an markdown file with some front matter.
 Yes you have key value pair in yaml format covered by --- on the of markdown file.
