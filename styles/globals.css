@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'theseasons';
-  src: local('TheSeasons'), url(./the-seasons.otf) format('opentype');
+  src: local('TheSeasons'), url(../public/fonts/the-seasons.otf) format('opentype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
