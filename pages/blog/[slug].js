@@ -1,19 +1,17 @@
 import fs from "fs";
 import ReactMarkdown from "react-markdown";
 import matter from "gray-matter";
-import Head from "next/head";
+import Wrapper from "../../components/wrapper/wrapper";
+import styles from "../../styles/Lyrics.module.css";
 
 export default function Blog({ frontmatter, markdown }) {
   return (
-    <div>
-      <Head>
-        <title>Community | {frontmatter.title}</title>
-      </Head>
-      <h1>{frontmatter.title}</h1>
-      <span>{frontmatter.date}</span>
-      <hr />
-      <ReactMarkdown>{markdown}</ReactMarkdown>
-    </div>
+    <Wrapper title="Blog">
+      <h2>{frontmatter.title}</h2>
+      <div className={styles.lyricContent}>
+        <ReactMarkdown>{markdown}</ReactMarkdown>
+      </div>
+    </Wrapper>
   );
 }
 

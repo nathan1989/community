@@ -1,22 +1,24 @@
 import fs from "fs";
 import matter from "gray-matter";
-import Link from "next/link";
 import Wrapper from "../../components/wrapper/wrapper";
 import ReactMarkdown from "react-markdown";
 import styles from "../../styles/Playlists.module.css";
+import lyricStyles from "../../styles/Lyrics.module.css";
+import Link from "next/link";
 
-export default function Home({ markdown, playlists }) {
+export default function Lyrics({ markdown, playlists }) {
   return (
-    <Wrapper title="Playlists">
+    <Wrapper title="Lyrics">
       <ReactMarkdown>{markdown}</ReactMarkdown>
-      <ul className={styles.playlists}>
+      <ul className={`${styles.playlists} ${lyricStyles.lyrics}`}>
         {playlists.map((playlist) => (
           <li key={playlist.slug}>
-              <a href={playlist.link} target="_blank" rel="noreferrer">
-                <img src="https://via.placeholder.com/150x120" alt="Playlist" />
+              <Link href={`/lyrics/${playlist.slug}`}>
+              <a>
                 <h3 className={styles.title}>{playlist.title}</h3>
                 <p className={styles.subtitle}>{playlist.subtitle}</p>
               </a>
+              </Link>
           </li>
         ))}
       </ul>
@@ -27,7 +29,7 @@ export default function Home({ markdown, playlists }) {
 export async function getStaticProps() {
   // Get data for playlists landing page
   const fileContent = matter(
-    fs.readFileSync("./content/pages/playlists.md", "utf8")
+    fs.readFileSync("./content/pages/lyrics.md", "utf8")
   );
   let frontmatter = fileContent.data;
   const markdown = fileContent.content;
