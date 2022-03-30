@@ -26,23 +26,23 @@ export default function Blog({ blogs }) {
 
 export async function getStaticProps() {
 
-  // List of files in blogs folder
-  const filesInBlogs = fs.readdirSync("./content/blog");
+  // // List of files in blogs folder
+  // const filesInBlogs = fs.readdirSync("./content/blog");
 
-  // Get the front matter and slug (the filename without .md) of all files
-  const blogs = filesInBlogs.map((filename) => {
-    const file = fs.readFileSync(`./content/blog/${filename}`, "utf8");
-    const matterData = matter(file);
+  // // Get the front matter and slug (the filename without .md) of all files
+  // const blogs = filesInBlogs.map((filename) => {
+  //   const file = fs.readFileSync(`./content/blog/${filename}`, "utf8");
+  //   const matterData = matter(file);
 
-    return {
-      ...matterData.data, // matterData.data contains front matter
-      slug: filename.slice(0, filename.indexOf(".")),
-    };
-  });
+  //   return {
+  //     ...matterData.data, // matterData.data contains front matter
+  //     slug: filename.slice(0, filename.indexOf(".")),
+  //   };
+  // });
 
   return {
     props: {
-      blogs,
+      blogs: [],
     },
   };
 }
