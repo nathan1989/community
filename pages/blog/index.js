@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import Wrapper from "../../components/wrapper/wrapper";
-import styles from "../../styles/Blogs.module.css";
+import styles from "../../styles/Blog.module.css";
 import Link from "next/link";
 
 export default function Blog({ blogs }) {
@@ -27,11 +27,11 @@ export default function Blog({ blogs }) {
 export async function getStaticProps() {
 
   // List of files in blogs folder
-  const filesInBlogs = fs.readdirSync("./content/blogs");
+  const filesInBlogs = fs.readdirSync("./content/blog");
 
   // Get the front matter and slug (the filename without .md) of all files
   const blogs = filesInBlogs.map((filename) => {
-    const file = fs.readFileSync(`./content/blogs/${filename}`, "utf8");
+    const file = fs.readFileSync(`./content/blog/${filename}`, "utf8");
     const matterData = matter(file);
 
     return {
