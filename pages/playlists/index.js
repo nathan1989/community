@@ -12,7 +12,7 @@ export default function Home({ markdown, playlists }) {
       <ul className={styles.playlists}>
         {playlists.map((playlist) => (
           <li key={playlist.slug}>
-              <a href={playlist.link} target="_blank">
+              <a href={playlist.link} target="_blank" rel="noreferrer">
                 <img src="https://via.placeholder.com/150x120" alt="Playlist" />
                 <h3 className={styles.title}>{playlist.title}</h3>
                 <p className={styles.subtitle}>{playlist.subtitle}</p>
