@@ -3,19 +3,20 @@ import matter from "gray-matter";
 import Link from "next/link";
 import Wrapper from "../../components/wrapper/wrapper";
 import ReactMarkdown from "react-markdown";
+import styles from "../../styles/Playlists.module.css";
 
 export default function Home({ markdown, playlists }) {
   return (
     <Wrapper title="Playlists">
       <ReactMarkdown>{markdown}</ReactMarkdown>
-      <ul>
+      <ul className={styles.playlists}>
         {playlists.map((playlist) => (
           <li key={playlist.slug}>
-            <Link href={`/playlists/${playlist.slug}`}>
-              <a>
-                {playlist.date}:{playlist.title}
+              <a href={playlist.link} target="_blank">
+                <img src="https://via.placeholder.com/150x120" alt="Playlist" />
+                <h3 className={styles.title}>{playlist.title}</h3>
+                <p className={styles.subtitle}>{playlist.subtitle}</p>
               </a>
-            </Link>
           </li>
         ))}
       </ul>

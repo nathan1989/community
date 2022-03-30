@@ -39,5 +39,7 @@ collections:
     preview_path: "/playlists/{{slug}}" # The path to the preview page
     fields: # The fields for each document, usually in front matter
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string"}
+      - {label: "Song link", name: "link", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: "HH:mm", format: "LLL"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Lyrics", name: "body", widget: "markdown"}
