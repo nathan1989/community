@@ -37,6 +37,13 @@ collections:
         preview_path: "/lyrics"
         fields:
           - {label: "Body", name: "body", widget: "markdown"}
+      - label: "I have decided"
+        name: "i-have-decided"
+        file: "content/pages/i-have-decided.md"
+        preview_path: "/i-have-decided"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
   - name: "playlist" # Used in routes, e.g., /admin/collections/playlist
     label: "Playlist" # Used in the UI
     folder: "content/playlists" # The path to the folder where the documents are stored

@@ -11,7 +11,7 @@ export default function Home(props) {
   ];
   return (
     <Wrapper isHome>
-      <img src="https://via.placeholder.com/450" alt="Community" />
+      <img src="https://via.placeholder.com/450" alt="Community" style={{maxWidth: '100%'}} />
       <div className={styles.details}>
         <p>
           <span>{props.day}</span>
